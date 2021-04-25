@@ -49,6 +49,7 @@ app.use(
         fontSrc: ["'self'", 'https:', 'http:', 'data:'],
         scriptSrc: ["'self'", 'https:', 'http:', 'blob:'],
         styleSrc: ["'self'", "'unsafe-inline'", 'https:', 'http:'],
+        imgSrc: ["'self'", 'example.com'],
       },
     },
   })
