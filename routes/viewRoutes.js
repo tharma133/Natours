@@ -1,6 +1,6 @@
 const express = require('express')
 const { protect, isLoggedIn } = require('../controller/authController')
-const { createBookingCheckout } = require('../controller/bookingController')
+
 const {
   getOverview,
   getTour,
@@ -13,7 +13,7 @@ const {
 
 const router = express.Router()
 
-router.get('/', createBookingCheckout, isLoggedIn, getOverview)
+router.get('/', isLoggedIn, getOverview)
 
 router.get('/signup', isLoggedIn, getSignup)
 
