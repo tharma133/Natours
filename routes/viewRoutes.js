@@ -9,7 +9,10 @@ const {
   updateUserData,
   getSignup,
   getMyTours,
+  alerts,
 } = require('../controller/viewsController')
+
+router.use(alerts)
 
 const router = express.Router()
 
