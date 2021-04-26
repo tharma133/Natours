@@ -71,6 +71,7 @@ const limiter = rateLimit({
 
 app.use('/api', limiter)
 
+// Stripe webhook, BEFORE body-parser, because stripe needs the body as stream
 app.post(
   '/webhook-checkout',
   express.raw({ type: 'application/json' }),
@@ -83,8 +84,8 @@ app.use(
     limit: '10kb',
   })
 )
-app.use(cookieparser())
 app.use(express.urlencoded({ extended: true, limit: '10kb' }))
+app.use(cookieparser())
 // Data sanitization against NoSQL query injection
 app.use(mongoSanitize())
 
