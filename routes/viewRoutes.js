@@ -15,6 +15,7 @@ const {
 const router = express.Router()
 
 router.use(alerts)
+
 router.get('/', isLoggedIn, getOverview)
 
 router.get('/signup', isLoggedIn, getSignup)
