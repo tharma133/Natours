@@ -97,7 +97,6 @@ if (bookBtn) {
     e.target.textContent = 'Processing...'
     const tourId = e.target.dataset.tourid
     bookTour(tourId)
-    e.target.textContent = 'Book Your Tour...'
   })
 }
 
