@@ -38,11 +38,11 @@ exports.signup = catchAsync(async (req, res, next) => {
     email: req.body.email,
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm,
-    passwordChangeAt: req.body.passwordChangeAt,
   })
   const url = `${req.protocol}://${req.get('host')}/me`
-  await new Email(newUser, url).sendWelcome()
+
   createSendToken(newUser, 201, req, res)
+  await new Email(newUser, url).sendWelcome()
 })
 
 exports.login = catchAsync(async (req, res, next) => {
@@ -56,6 +56,7 @@ exports.login = catchAsync(async (req, res, next) => {
   if (!user || !(await user.correctPassword(password, user.password))) {
     return next(new AppError('Incorrect email or password', 401))
   }
+
   // 3) If everything ok, send token to client
   createSendToken(user, 200, req, res)
 })
