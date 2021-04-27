@@ -5,7 +5,7 @@ export const login = async (email, password) => {
   try {
     const res = await axios({
       method: 'POST',
-      url: 'http://127.0.0.1:3000/api/v1/users/login',
+      url: '/api/v1/users/login',
       data: {
         email,
         password,
@@ -19,7 +19,7 @@ export const login = async (email, password) => {
       }, 1500)
     }
   } catch (err) {
-    showAlert('error', err.response.data.message)
+    showAlert('error', 'Invalid email or password')
   }
 }
 
@@ -42,7 +42,12 @@ export const signup = async (name, email, password, passwordConfirm) => {
       }, 1500)
     }
   } catch (err) {
-    showAlert('error', err.response.data.message)
+    showAlert(
+      'error',
+      `${err.response.data.message}`
+        ? err.response.data.message
+        : 'Check your entered data'
+    )
   }
 }
 
