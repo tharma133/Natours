@@ -44,6 +44,7 @@ const tourSchema = new mongoose.Schema(
     price: {
       type: Number,
       required: [true, 'A tour must have a price'],
+      set: (val) => (val = Math.round(val * 74.64)),
     },
     priceDiscount: {
       type: Number,
