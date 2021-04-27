@@ -18,7 +18,7 @@ export const login = async (email, password) => {
       }, 1500)
     }
   } catch (err) {
-    showAlert('error', err)
+    showAlert('error', 'Invalid email or password')
   }
 }
 
